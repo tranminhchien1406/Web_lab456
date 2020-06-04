@@ -21,11 +21,5 @@ namespace TranMinhChien_Web_lab456.Models
         [Required]
         public byte CategogryId { get; set; }
     }
-    public class Category
-    {
-        public byte Id { get; set; }
-        [Required]
-        [StringLength(255)]
-        public string Name { get; set; }
-    }
+
 }
