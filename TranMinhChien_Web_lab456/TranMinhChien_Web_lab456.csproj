@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -204,6 +205,18 @@
     <Compile Include="Migrations\202006040748473_InitialModel.cs" />
     <Compile Include="Migrations\202006040748473_InitialModel.Designer.cs">
       <DependentUpon>202006040748473_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006040843149_CreateTableCourse.cs" />
+    <Compile Include="Migrations\202006040843149_CreateTableCourse.Designer.cs">
+      <DependentUpon>202006040843149_CreateTableCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006040844192_CreateTableCategories.cs" />
+    <Compile Include="Migrations\202006040844192_CreateTableCategories.Designer.cs">
+      <DependentUpon>202006040844192_CreateTableCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006040845433_PopulateCategoryTable.cs" />
+    <Compile Include="Migrations\202006040845433_PopulateCategoryTable.Designer.cs">
+      <DependentUpon>202006040845433_PopulateCategoryTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -278,6 +291,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Course\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -290,6 +304,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202006040748473_InitialModel.resx">
       <DependentUpon>202006040748473_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006040843149_CreateTableCourse.resx">
+      <DependentUpon>202006040843149_CreateTableCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006040844192_CreateTableCategories.resx">
+      <DependentUpon>202006040844192_CreateTableCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006040845433_PopulateCategoryTable.resx">
+      <DependentUpon>202006040845433_PopulateCategoryTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
