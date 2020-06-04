@@ -9,7 +9,7 @@ namespace TranMinhChien_Web_lab456.Controllers
     public class CourseController : Controller
     {
         // GET: Course
-        public ActionResult Index()
+        public ActionResult Create()
         {
             return View();
         }
