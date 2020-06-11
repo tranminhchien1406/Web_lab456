@@ -7,13 +7,13 @@ namespace TranMinhChien_Web_lab456.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialModel1 : IMigrationMetadata
+    public sealed partial class PopulateCategoryTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialModel1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PopulateCategoryTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202006040748473_InitialModel1"; }
+            get { return "202006110738386_PopulateCategoryTable"; }
         }
         
         string IMigrationMetadata.Source

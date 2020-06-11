@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TranMinhChien_Web_lab456.Migrations;
 using TranMinhChien_Web_lab456.Models;
 using TranMinhChien_Web_lab456.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -28,6 +27,7 @@ namespace TranMinhChien_Web_lab456.Controllers
         }
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CourseViewModel viewModel)
         {
             if (!ModelState.IsValid)
