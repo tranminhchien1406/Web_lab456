@@ -18,6 +18,14 @@ namespace TranMinhChien_Web_lab456.Controllers
         {
             _dbContext = new ApplicationDbContext();
         }
+        public ActionResult Create()
+        {
+            var viewModel = new CourseViewModel
+            {
+                Categories = _dbContext.Categories.ToList()
+            };
+            return View(viewModel);
+        }
         [HttpPost]
         [Authorize]
         public ActionResult Create(CourseViewModel viewModel)
