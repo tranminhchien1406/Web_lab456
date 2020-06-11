@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TranMinhChien_Web_lab456.Migrations;
 using TranMinhChien_Web_lab456.Models;
 using TranMinhChien_Web_lab456.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace TranMinhChien_Web_lab456.Controllers
 {
@@ -17,6 +18,7 @@ namespace TranMinhChien_Web_lab456.Controllers
         {
             _dbContext = new ApplicationDbContext();
         }
+        [HttpPost]
         [Authorize]
         public ActionResult Create(CourseViewModel viewModel)
         {
@@ -27,14 +29,14 @@ namespace TranMinhChien_Web_lab456.Controllers
             }    
             var course = new Course
             {
-                LecturerId = ApplicationUser.Indentity.GetUserId(),
+                LecturerId = User.Identity.GetUserId(),
                 DateTime = viewModel.GetDateTime(),
-                CategogryId = viewModel.Category,
+                CategoryId = viewModel.Category,
                 Place = viewModel.Place
             };
-            _dbContext.Course.Add(course);
+            _dbContext.Courses.Add(course);
             _dbContext.SaveChanges();
-            return View(viewModel);
+            return RedirectToAction("Index","Home");
         }
     }
 }
