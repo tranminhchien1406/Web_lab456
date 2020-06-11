@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TranMinhChien_Web_lab456.Models;
+using System.Data.Entity;
 
 namespace TranMinhChien_Web_lab456.Controllers
 {
