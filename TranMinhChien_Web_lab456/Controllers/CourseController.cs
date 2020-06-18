@@ -54,9 +54,9 @@ namespace TranMinhChien_Web_lab456.Controllers
             var courses = _dbContext.Attendances
                 .Where(a => a.AttendeeId == userId)
                 .Select(a => a.Course)
-                .Include(l = l.Lecturer)
-                .Include(l = l.Category)
-                .Tolist();
+                .Include(l => l.Lecturer)
+                .Include(l => l.Category)
+                .ToList();
             var viewModel = new CoursesViewModel
             {
                 UpcommingCourse = courses,
@@ -69,9 +69,9 @@ namespace TranMinhChien_Web_lab456.Controllers
         {
             var userId = User.Identity.GetUserId();
             var courses = _dbContext.Attendances
-                .Where(c => c.LecturerId == userId && c.DateTime.Now)
-                .Include(l = l.Lecturer)
-                .Include(c = c.Category)
+                .Where(c => c.LecturerId == userId && c.DateTime > DateTime.Now)
+                .Include(l => l.Lecturer)
+                .Include(c => c.Category)
                 .Tolist();
             return View(courses);
         }

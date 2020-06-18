@@ -19,5 +19,7 @@ namespace TranMinhChien_Web_lab456.Models
         [Key]
         [Column(Order = 2)]
         public string AttendeeId { get; set; }
+        public string LecturerId { get; set; }
+        public object DateTime { get; set; }
     }
 }
