@@ -7,5 +7,6 @@ namespace TranMinhChien_Web_lab456.DTOs
 {
     public class AttendanceDto
     {
+        public int CourseId { get; set; }
     }
 }

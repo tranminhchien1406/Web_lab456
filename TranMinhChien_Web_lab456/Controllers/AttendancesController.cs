@@ -1,31 +1,34 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TranMinhChien_Web_lab456.DTOs;
+using TranMinhChien_Web_lab456.Models;
 
 namespace TranMinhChien_Web_lab456.Controllers
 {
     public class AttendancesController : ApiController
     {
-        private ApplicationDbcontext _dbContext;
+        private ApplicationDbContext _dbContext;
 
         public AttendancesController()
         {
-            _dbContext = new ApplicationDbcontext();
+            _dbContext = new ApplicationDbContext();
         }
         [HttpPost]
-        public IHttpActionResult Attend([FromBody] int courseId)
+        public IHttpActionResult Attend(AttendanceDto attendanceDto)
         {
-            var userId = User.Identity.GetUseeerId();
-            if (_dbContext.Attendances.Any(a => a.AttendeeId == userId && a.CourseId == courseId))
+            var userId = User.Identity.GetUserId();
+            if (_dbContext.Attendances.Any(a => a.AttendeeId == userId && a.CourseId == attendanceDto.CourseId))
                 return BadRequest("The Attendance Already Exist!");
-            var attendance = new Attendace
+            var attendance = new Attendance
             {
-                CourseId = courseId,
-                AttendeeId = userId()
+                CourseId = attendanceDto.CourseId,
+                AttendeeId = userId
             };
             _dbContext.Attendances.Add(attendance);
             _dbContext.SaveChanges();

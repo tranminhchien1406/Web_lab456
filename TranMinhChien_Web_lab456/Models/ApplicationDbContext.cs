@@ -11,7 +11,7 @@ namespace TranMinhChien_Web_lab456.Models
     {
         public DbSet<Course> Courses { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public Dbset<Attendance> Attendances { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
         public ApplicationDbContext()
             : base("Defaultconnection", throwIfV1Schema: false)
             {
@@ -22,7 +22,7 @@ namespace TranMinhChien_Web_lab456.Models
             return new ApplicationDbContext();
         }
 
-        protected override void OnModelCeating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Attendance>()
                 .HasRequired(a => a.Course)
