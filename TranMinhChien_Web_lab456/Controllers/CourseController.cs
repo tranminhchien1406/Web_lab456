@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TranMinhChien_Web_lab456.Models;
 using TranMinhChien_Web_lab456.ViewModels;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 
 namespace TranMinhChien_Web_lab456.Controllers
 {
@@ -46,5 +47,34 @@ namespace TranMinhChien_Web_lab456.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index","Home");
         }
-    }
+        [Authorize]
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+            var courses = _dbContext.Attendances
+                .Where(a => a.AttendeeId == userId)
+                .Select(a => a.Course)
+                .Include(l = l.Lecturer)
+                .Include(l = l.Category)
+                .Tolist();
+            var viewModel = new CoursesViewModel
+            {
+                UpcommingCourse = courses,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+            return View(viewModel);
+        }
+        [Authorize]
+        public ActionResult Mine()
+        {
+            var userId = User.Identity.GetUserId();
+            var courses = _dbContext.Attendances
+                .Where(c => c.LecturerId == userId && c.DateTime.Now)
+                .Include(l = l.Lecturer)
+                .Include(c = c.Category)
+                .Tolist();
+            return View(courses);
+        }
+    
+        }
 }

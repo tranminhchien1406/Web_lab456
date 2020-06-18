@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TranMinhChien_Web_lab456.Models;
 using System.Data.Entity;
+using TranMinhChien_Web_lab456.ViewModels;
 
 namespace TranMinhChien_Web_lab456.Controllers
 {
@@ -21,7 +22,13 @@ namespace TranMinhChien_Web_lab456.Controllers
                 .Include(c => c.Lecturer)
                 .Include(c => c.Category)
                 .Where(c => c.DateTime > DateTime.Now);
-            return View(upcommingCourses);
+
+            var viewModel = new CoursesViewModel
+            {
+                UpcommingCourse = upcommingCourses,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+            return View(viewModel);
         }
 
         public ActionResult About()
